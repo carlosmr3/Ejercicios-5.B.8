@@ -38,7 +38,7 @@
     fetch("listaJugadores.json")
         .then(response => response.json())
         .then(jugadores => {
-            for (jugador of jugadores) {
+            for (let jugador of jugadores) {
                 let nuevaTarjeta = document.createElement("div"); // Creamos un nuevo div para la tarjeta del jugador
                 let tituloJugador = document.createElement("h1"); // Creamos un nuevo elemento h1 para el nombre del jugador
                 tituloJugador.setAttribute("style", "text-align: center; font-family: Arial;");
