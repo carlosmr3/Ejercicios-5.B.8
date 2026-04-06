@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Creación de nuevos elementos de la página con JS (elementos de lista)</h1>
+    <br>
+    <h2>Lista Jugadores R.Madrid</h2>
+    <button id="boton">Cargar Lista Jugadores</button>
+    <ol id="lista-jugadores">
+
+    </ol>
+    <p><a href="index.html">Volver</a></p>
+    <script>
+        fetch("lista-jugadores.json") // Realizamos una solicitud para obtener el archivo JSON que contiene la lista de jugadores
+            .then(response => response.json())
+            .then(jugadores => {
+                document.getElementById("boton").addEventListener("click", cargarLista); // Agregamos un evento de clic al botón con id "boton" que ejecutará la función cargarLista
+                function cargarLista() {
+                    document.getElementById("lista-jugadores").innerHTML = ""; // Limpiamos el contenido del elemento con id "lista-jugadores" para evitar duplicados                   
+                    for (jugador of jugadores) { // Recorremos el array de jugadores
+                        let nuevoLi = document.createElement("li"); // Creamos un nuevo elemento de lista (li)
+                        nuevoLi.innerHTML = jugador; // Asignamos el nombre del jugador al contenido del nuevo elemento de lista
+                        nuevoLi.setAttribute("style", "color: purple"); // Le damos un estilo al nuevo elemento de lista (color morado)
+                        document.getElementById("lista-jugadores").appendChild(nuevoLi); // Agregamos el nuevo elemento de lista al elemento con id "lista-jugadores"
+                    }
+                }
+            }
+            )
+
+    </script>
+</body>
+
+</html>

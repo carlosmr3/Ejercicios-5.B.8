@@ -1,0 +1,26 @@
+[
+        {
+            "nombre": "MBappe",
+            "edad": 28,
+            "ficha": 2000000000,
+            "foto": "mbappe.webp"
+        },
+        {
+            "nombre": "Valverde",
+            "edad": 26,
+            "ficha": 1000000000,
+            "foto": "valverde.webp"
+        },
+        {
+            "nombre": "Carvajal",
+            "edad": 50,
+            "ficha": 1500000000,
+            "foto": "carvajal.webp"
+        },
+        {
+            "nombre": "Vinicius",
+            "edad": 27,
+            "ficha": 2500000000,
+            "foto": "vinicius.webp"
+        }
+    ]

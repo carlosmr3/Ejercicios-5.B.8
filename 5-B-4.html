@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            border: 1px solid black;
+            box-shadow: 3px 3px 5px black;
+        }
+
+        img {
+            width: 200px;
+        }
+
+        #contenedor {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Creación de nuevos elementos de la página con JS (divs)</h1>
+    <br>
+    <h2>Jugadores del Real Madrid</h2>
+    <div id="contenedor">
+
+    </div>
+
+
+    <p><a href="index.html">Volver</a></p>
+</body>
+<script>
+    fetch("listaJugadores.json")
+        .then(response => response.json())
+        .then(jugadores => {
+            for (jugador of jugadores) {
+                let nuevaTarjeta = document.createElement("div"); // Creamos un nuevo div para la tarjeta del jugador
+                let tituloJugador = document.createElement("h1"); // Creamos un nuevo elemento h1 para el nombre del jugador
+                tituloJugador.setAttribute("style", "text-align: center; font-family: Arial;");
+                tituloJugador.innerHTML = jugador.nombre; // Asignamos el nombre del jugador al contenido
+                nuevaTarjeta.appendChild(tituloJugador); // Agregamos el título del jugador a la tarjeta
+                let tituloEdad = document.createElement("h2");
+                tituloEdad.innerHTML = "Edad: " + jugador.edad; // Asignamos la edad del jugador al contenido del título de edad
+                nuevaTarjeta.appendChild(tituloEdad);
+                //ahora añadop la ficha
+                let tituloFicha = document.createElement("h3");
+                tituloFicha.innerHTML = "Ficha: " + jugador.ficha; // Asignamos la ficha del jugador al contenido del título de ficha
+                nuevaTarjeta.appendChild(tituloFicha);
+                //ahora añado la foto
+                let nuevaFoto = document.createElement("img"); // Creamos un nuevo elemento img para la foto del jugador
+                nuevaFoto.src = jugador.foto; // Asignamos la ruta de la foto del jugador al atributo src de la imagen
+                nuevaTarjeta.appendChild(nuevaFoto); // Agregamos la foto del jugador a la tarjeta
+                //Finalmente añado la tarjeta al contenedor
+                document.getElementById("contenedor").appendChild(nuevaTarjeta); // Agregamos la tarjeta al contenedor principal
+            }
+        })
+</script>
+
+</html>
